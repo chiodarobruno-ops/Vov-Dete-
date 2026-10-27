@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Para Onde Vou? — Descobre o teu próximo destino de viagem</title>
+  <meta name="description" content="Responde a 15 perguntas e descobre os 3 países que mais combinam contigo. Questionário personalizado de viagem — totalmente gratuito e sem registo." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Para Onde Vou? — Descobre o teu próximo destino" />
+  <meta property="og:description" content="Responde a 15 perguntas e recebe os 3 destinos perfeitos para ti. Temperatura, orçamento, duração — tudo calculado ao pormenor." />
+  <meta property="og:locale"      content="pt_PT" />
+
+  <!-- Favicons (emoji inline — sem ficheiros externos) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ECRÃ 1: INTRO
+  ══════════════════════════════════════════════════════════════ -->
+  <section id="screen-intro" class="screen" aria-label="Ecrã inicial">
+    <div class="intro-content">
+
+      <div class="intro-badge" role="note">
+        <span aria-hidden="true">✈️</span>
+        Questionário de viagem
+      </div>
+
+      <h1 class="intro-title">
+        Para Onde<br />
+        <span>Vou?</span>
+      </h1>
+
+      <p class="intro-subtitle">
+        Responde a 15 perguntas rápidas sobre os teus gostos e orçamento e recebe os <strong>3 destinos que mais combinam contigo</strong> — com razões, custos estimados e muito mais.
+      </p>
+
+      <div class="intro-stats" aria-label="Estatísticas do questionário">
+        <div class="intro-stat">
+          <span class="intro-stat-number">15</span>
+          <span class="intro-stat-label">Perguntas</span>
+        </div>
+        <div class="intro-stat">
+          <span class="intro-stat-number">30</span>
+          <span class="intro-stat-label">Destinos</span>
+        </div>
+        <div class="intro-stat">
+          <span class="intro-stat-number">~3'</span>
+          <span class="intro-stat-label">Para completar</span>
+        </div>
+      </div>
+
+      <button id="btn-start" class="btn btn-primary" aria-label="Começar o questionário de viagem">
+        Começar a descobrir ✈️
+      </button>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ECRÃ 2: QUESTIONÁRIO
+  ══════════════════════════════════════════════════════════════ -->
+  <section id="screen-quiz" class="screen" aria-label="Questionário">
+
+    <!-- Cabeçalho fixo com progresso -->
+    <header class="quiz-header" role="banner">
+      <div class="quiz-header-top">
+        <span
+          id="quiz-block-label"
+          class="quiz-block-label"
+          aria-live="polite"
+          aria-label="Bloco atual"
+        >
+          🗺️ Destino
+        </span>
+        <span
+          id="quiz-counter"
+          class="quiz-counter"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          Pergunta 1 de 15
+        </span>
+      </div>
+
+      <div
+        class="progress-bar-track"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="7"
+        aria-label="Progresso do questionário"
+      >
+        <div id="progress-fill" class="progress-bar-fill" style="width: 7%"></div>
+      </div>
+    </header>
+
+    <!-- Área da pergunta atual -->
+    <main class="quiz-body">
+      <div id="quiz-question-area" class="quiz-question-area" aria-live="polite" aria-atomic="true">
+        <!-- Conteúdo injetado dinamicamente pelo app.js -->
+      </div>
+    </main>
+
+    <!-- Rodapé com botões de navegação -->
+    <footer class="quiz-footer">
+      <button
+        id="btn-back"
+        class="btn btn-ghost"
+        aria-label="Voltar à pergunta anterior"
+        style="visibility: hidden"
+        type="button"
+      >
+        ← Voltar
+      </button>
+
+      <div id="quiz-footer-actions" class="quiz-footer-actions">
+        <!-- Botão "Continuar" injetado dinamicamente pelo app.js para perguntas de escolha múltipla -->
+      </div>
+    </footer>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ECRÃ 3: A CALCULAR…
+  ══════════════════════════════════════════════════════════════ -->
+  <section id="screen-loading" class="screen" aria-label="A calcular resultados" aria-live="polite">
+    <div class="loading-content" role="status">
+      <div class="loading-globe" aria-hidden="true">🌍</div>
+      <p class="loading-title">A encontrar os teus destinos…</p>
+      <div class="loading-dots" aria-hidden="true">
+        <span class="loading-dot"></span>
+        <span class="loading-dot"></span>
+        <span class="loading-dot"></span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ECRÃ 4: RESULTADOS
+  ══════════════════════════════════════════════════════════════ -->
+  <section id="screen-results" class="screen" aria-label="Os teus resultados">
+
+    <header class="results-header">
+      <h1 class="results-title">Os teus 3 destinos ideais ✈️</h1>
+      <p class="results-subtitle">Com base nas tuas preferências de temperatura, orçamento, interesses e companhia</p>
+    </header>
+
+    <div class="results-body">
+      <!-- Cartões injetados dinamicamente pelo app.js -->
+      <div id="results-container" aria-live="polite" aria-atomic="true">
+      </div>
+    </div>
+
+    <!-- Ações -->
+    <div class="results-actions">
+      <div class="results-actions-row">
+        <button
+          id="btn-restart"
+          class="btn btn-secondary"
+          aria-label="Recomeçar o questionário do início"
+          type="button"
+        >
+          🔄 Refazer o questionário
+        </button>
+
+        <button
+          id="btn-copy"
+          class="btn btn-outline-accent"
+          aria-label="Copiar os resultados para a área de transferência"
+          type="button"
+        >
+          📋 Copiar os meus resultados
+        </button>
+
+        <span id="copy-feedback" class="copy-feedback" aria-live="polite" role="status"></span>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- App entry point (ES module) -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
